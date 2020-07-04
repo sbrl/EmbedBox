@@ -1,0 +1,39 @@
+[env]
+# The mode to operate in.
+#	production		All the caches! Improves performance, but makes development annoying.
+#	development		Disables some caches etc to make development easier
+mode = "production"
+
+[http]
+# Whether to insert the access-control-allow-origin CORS http header into requests. Set to a string to send it.
+cors = false
+#cors = "INSERT_VALUE_HERE"
+
+
+[routing]
+default_action = "view"
+
+[access_control]
+# Embed requests will only be allowed if the requested url matches any of these regexes
+# WARNING: An empty array means that no requests will be allowed!
+allow = [
+	#"http://git(hub|lab).com/sbrl/.*"
+]
+# Any URLs that match these regexes will be blocked - even if they would normally be allowed.
+deny = [
+	
+]
+
+[cache]
+# Cache downloaded & highlighted iteems for 1 hour
+lifetime = 3600
+
+###############################################################################
+
+##### Internal Settings #####
+# Don't edit these unless you know what you're doing!
+
+[internal]
+
+[internal.templating]
+templates_path="src/templates"
