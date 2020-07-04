@@ -3,9 +3,10 @@
 namespace EmbedBox\Actions;
 
 use \SBRL\TomlConfig;
+use \SBRL\HttpResponse;
+use \SBRL\DisplayFormatter;
 use \EmbedBox\CachedHighlighter;
 use \EmbedBox\AccessController;
-use \SBRL\HttpResponse;
 
 class View
 {
@@ -26,6 +27,9 @@ class View
 		$url = $_GET["url"];
 		$type = $_GET["type"] ?? "__AUTO__";
 		
+		$theme_name = $_GET["theme"] ?? $this->settings->get("highlighting.default_theme");
+		$theme_name_dark = $_GET["theme_dark"] ?? $this->settings->get("highlighting.default_theme_dark");
+		
 		if(!$this->access_controller->is_allowed($url))
 			return HttpResponse::create_error(400, "Error: The url specified is not allowed by the defined access rules (if this is a mistake, update them in the settings file)");
 		
@@ -35,10 +39,12 @@ class View
 			return HttpResponse::create_error(503, "Error: Something went wrong when highlighting the specified URL. Details: $result->error");
 		
 		return HttpResponse::create_nightink_file_simple(200, "embed", (object) [
+			"theme" => $theme_name,
+			"theme_dark" => $theme_name_dark,
 			"code" => $result->content,
 			"url" => $url,
 			"filename" => basename($url),
-			"filesize" => $result->filesize,
+			"filesize" => DisplayFormatter::human_filesize($result->filesize),
 			"language" => $result->type
 		])->header_set("x-embedbox-cache", $result->was_hit ? "hit" : "miss");
 	}

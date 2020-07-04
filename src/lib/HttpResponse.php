@@ -43,6 +43,7 @@ class HttpResponse
 	
 	public function content_type(string $type) : HttpResponse {
 		$this->header_set("content-type", $type);
+		return $this;
 	}
 	
 	public function body_set($body) : HttpResponse {

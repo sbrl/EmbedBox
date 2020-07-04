@@ -31,7 +31,7 @@ function generate_html(root_url, url, lang) {
 
 function generate_iframe_src(root_url, url, lang) {
 	let iframe_src = `${root_url}?action=view&amp;url="${encodeURIComponent(url)}`;
-	if(lang.length > 0) iframe_src += `&amp;lang=${lang}`;
+	if(lang.length > 0) iframe_src += `&amp;lang=${encodeURIComponent(lang)}`;
 	return iframe_src;
 }
 

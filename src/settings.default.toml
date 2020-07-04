@@ -28,6 +28,11 @@ default_action = "builder"
 # Cache downloaded & highlighted iteems for 1 hour
 lifetime = 3600
 
+[highlighting]
+default_theme = "github-gist"
+# Default theme for users with prefers-color-scheme: dark or terminal browsers
+default_theme_dark = "atom-one-dark-reasonable"
+
 ###############################################################################
 
 ##### Internal Settings #####

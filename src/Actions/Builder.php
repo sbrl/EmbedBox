@@ -4,8 +4,6 @@ namespace EmbedBox\Actions;
 
 use \SBRL\TomlConfig;
 use \SBRL\HttpResponse;
-use \EmbedBox\CachedHighlighter;
-use \EmbedBox\AccessController;
 
 class Builder
 {

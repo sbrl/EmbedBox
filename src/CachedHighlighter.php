@@ -10,7 +10,7 @@ class CachedHighlighter {
 	private $settings;
 	private $cache;
 	
-	function __construct(TomlSettings $settings, Stash\Pool $cache, Highlighter $highlighter) {
+	function __construct(TomlConfig $settings, \Stash\Pool $cache, Highlighter $highlighter) {
 		$this->settings = $settings;
 		$this->cache = $cache;
 		$this->highlighter = $highlighter;
@@ -29,11 +29,11 @@ class CachedHighlighter {
 		// 1: Check the cache
 		$item = $this->cache->getItem("render_url/$cache_key");
 		if($item->isHit() && $do_cache) {
-			$result = $item->get();
+			$result = explode("|", $item->get(), 2);
 			return (object) [
 				"success" => true,
-				"content" => $result->content,
-				"filesize" => $result->filesize,
+				"content" => $result[1],
+				"filesize" => intval($result[0]),
 				"type" => $type,
 				"was_hit" => true
 			];
@@ -51,10 +51,9 @@ class CachedHighlighter {
 		
 		// 3: Update the cache
 		$item->expiresAfter($this->settings->get("cache.lifetime"));
-		$this->cache->save($item->set([
-			"content" => $result,
-			"filesize" => strlen($content)
-		]));
+		$this->cache->save($item->set(
+			strlen($content)."|".$result
+		));
 		
 		
 		// 4: Return result
