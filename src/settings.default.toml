@@ -9,6 +9,9 @@ mode = "production"
 cors = false
 #cors = "INSERT_VALUE_HERE"
 
+# The absolute root url to index.php - used when generating embed code.
+root_url = "CHANGE_ME"
+#root_url = "https://example.com/path/to/directory/index.php"
 
 [routing]
 default_action = "view"

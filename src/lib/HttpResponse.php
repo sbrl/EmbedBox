@@ -70,10 +70,10 @@ class HttpResponse
 	
 	// ------------------------------------------------------------------------
 	
-	public static function create_simple($status, $body) : HttpResponse {
+	public static function create_simple(int $status, $body) : HttpResponse {
 		return self::create($status, [], $body);
 	}
-	public static function create($status, $headers, $body) : HttpResponse {
+	public static function create(int $status, array $headers, $body) : HttpResponse {
 		$result = (new self())
 			->status_set($status)
 			->body_set($body);
@@ -95,7 +95,7 @@ class HttpResponse
 		);
 	}
 	
-	public static function create_nightink_file(int $status, string $template_name, $options) {
+	public static function create_nightink_file(int $status, string $template_name, $options) : HttpResponse  {
 		global $settings;
 		
 		$nightink = new NightInk();
@@ -109,5 +109,10 @@ class HttpResponse
 				$options
 			)
 		);
+	}
+	
+	public static function create_error(int $status, string $message) : HttpResponse {
+		return self::create_simple($status, $message)
+			->content_type("text/plain");
 	}
 }

@@ -19,38 +19,49 @@ class CachedHighlighter {
 		if($type == "__AUTO__")
 			$type = $this->get_file_ext($url);
 		if($type == null)
-			return [ "success" => false, "error" => "autodetect_failed" ];
+			return (object) [ "success" => false, "error" => "autodetect_failed" ];
 		
 		$cache_key = $this->get_cache_key($url, $type);
 		
 		
 		// 1: Check the cache
 		$item = $this->cache->getItem("render_url/$cache_key");
-		if($item->isHit() && $do_cache)
+		if($item->isHit() && $do_cache) {
+			$result = $item->get();
 			return (object) [
 				"success" => true,
-				"result" => $item->get(),
+				"content" => $result->content,
+				"filesize" => $result->filesize,
+				"type" => $type,
 				"was_hit" => true
 			];
+		}
 		
 		
 		// 2: Render if it's not in the cache
 		$item->lock(); // Let others know we're updating the cache
+		$content = file_get_contents($url);
 		$result = $this->do_highlight_string(
 			$type,
-			file_get_contents($url)
+			$content
 		);
 		
 		
 		// 3: Update the cache
-		$this->cache->save($item->set($result));
+		$item->expiresAfter($this->settings->get("cache.lifetime"));
+		$this->cache->save($item->set([
+			"content" => $result,
+			"filesize" => strlen($content)
+		]));
 		
 		
 		// 4: Return result
 		return (object) [
 			"success" => true,
-			"result" => $result,
-			"was_hit" => false
+			"content" => $result,
+			"type" => $type,
+			"was_hit" => false,
+			"filesize" => strlen($content)
 		];
 	}
 	

@@ -53,7 +53,7 @@ class TomlConfig
 	 * @param string $defaultSettingsFilePath	The path to the default settings file.
 	 */
 	public function __construct($settingsFilePath, $defaultSettingsFilePath) {
-		$this->customSettingsBanner = "# -------[ Custom Settings File - Last updated " . date("Y-m-d") . " ]-------";
+		$this->customSettingsBanner = "# -------[ Custom Settings File - Last updated " . date("Y-m-d") . " ]-------\n[http]\nroot_url = \"CHANGE_ME\"\n#root_url = \"https://example.com/path/to/index.php\"\n\n[access_control]\nallow = [\n\t# Enter regexes as strings here\n\t#\"^https://((raw|gist)\.)?git(hub|lab)\.com/.*$\"\n]\n";
 		
 		$this->defaultSettings = Toml::ParseFile($defaultSettingsFilePath, true);
 		

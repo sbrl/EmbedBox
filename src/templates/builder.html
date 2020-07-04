@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>EmbedBox</title>
+	</head>
+	<body>
+		<h1>EmbedBox</h1>
+		
+		<div class="input">
+			<input type="hidden" id="root-url" value="{{root_url}}" />
+			<div class="item">
+				<label for="input-url">URL:</label>
+				<input type="url" id="input-url" />
+			</div>
+			<div class="item">
+				<label for="input-language">Language:</label>
+				<input type="text" id="input-language" placeholder="Leave blank for auto-detection from the URL" />
+			</div>
+		</div>
+		
+		<output id="output-html"></output>
+		
+		<output id="output-markdown"></output>
+		
+		<iframe id="preview"></iframe>
+		
+		<!---------------->
+		<link rel="stylesheet" href="src/static/css/builder.css" />
+		<script src="src/static/js/builder.js" charset="utf-8"></script>
+	</body>
+</html>
