@@ -2,9 +2,10 @@
 
 namespace EmbedBox\Actions;
 
-use \SBRL\HttpResponse;
+use \SBRL\TomlConfig;
 use \EmbedBox\CachedHighlighter;
 use \EmbedBox\AccessController;
+use \SBRL\HttpResponse;
 
 class View
 {
@@ -33,7 +34,7 @@ class View
 		if(!$result->success)
 			return HttpResponse::create_error(503, "Error: Something went wrong when highlighting the specified URL. Details: $result->error");
 		
-		return HttpResponse::create_nightink_file(200, "embed", (object) [
+		return HttpResponse::create_nightink_file_simple(200, "embed", (object) [
 			"code" => $result->content,
 			"url" => $url,
 			"filename" => basename($url),

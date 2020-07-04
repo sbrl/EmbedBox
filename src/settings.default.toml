@@ -14,18 +14,15 @@ root_url = "CHANGE_ME"
 #root_url = "https://example.com/path/to/directory/index.php"
 
 [routing]
-default_action = "view"
+default_action = "builder"
 
 [access_control]
 # Embed requests will only be allowed if the requested url matches any of these regexes
 # WARNING: An empty array means that no requests will be allowed!
-allow = [
-	#"http://git(hub|lab).com/sbrl/.*"
-]
+#allow = [ "^http://git(hub|lab).com/sbrl/.*$" ]
+
 # Any URLs that match these regexes will be blocked - even if they would normally be allowed.
-deny = [
-	
-]
+#deny = [ ]
 
 [cache]
 # Cache downloaded & highlighted iteems for 1 hour

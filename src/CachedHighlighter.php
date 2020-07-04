@@ -4,6 +4,8 @@ namespace EmbedBox;
 
 use \Highlight\Highlighter;
 
+use \SBRL\TomlConfig;
+
 class CachedHighlighter {
 	private $settings;
 	private $cache;

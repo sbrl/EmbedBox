@@ -3,10 +3,11 @@
     "description": "Generate pretty syntax-highlighted embeds from remote code.",
     "type": "project",
     "require": {
-        "yosymfony/toml": "^1.0",
         "scrivo/highlight.php": "^v9",
         "php-di/php-di": "^6.2",
-        "tedivm/stash": "^0.15.2"
+        "tedivm/stash": "^0.15.2",
+        "aura/autoload": "^2.0",
+        "yosymfony/toml": "^1.0"
     },
     "license": "MPL-2.0",
     "authors": [

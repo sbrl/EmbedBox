@@ -14,6 +14,9 @@ use \Yosymfony\Toml\TomlBuilder;
  * @lastModified	22nd March 2017
  * @license			https://www.mozilla.org/en-US/MPL/2.0/	Mozilla Public License 2.0
  * Changelog:
+ 	 * v0.6 - 4th July 2020
+	 	 * Add new has() method
+	 	 * Add type hints
 	 * v0.5.2 - 15th January 2018
 		 * chmod auto-generated settings file to be 0600
 	 * v0.5.1 - 14th January 2018
@@ -52,7 +55,7 @@ class TomlConfig
 	 * @param string $settingsFilePath			The path to the customised settings file.
 	 * @param string $defaultSettingsFilePath	The path to the default settings file.
 	 */
-	public function __construct($settingsFilePath, $defaultSettingsFilePath) {
+	public function __construct(string $settingsFilePath, string $defaultSettingsFilePath) {
 		$this->customSettingsBanner = "# -------[ Custom Settings File - Last updated " . date("Y-m-d") . " ]-------\n[http]\nroot_url = \"CHANGE_ME\"\n#root_url = \"https://example.com/path/to/index.php\"\n\n[access_control]\nallow = [\n\t# Enter regexes as strings here\n\t#\"^https://((raw|gist)\.)?git(hub|lab)\.com/.*$\"\n]\n";
 		
 		$this->defaultSettings = Toml::ParseFile($defaultSettingsFilePath, true);
@@ -66,12 +69,24 @@ class TomlConfig
 			chmod($settingsFilePath, 0600);
 		}
 	}
+	
+	/**
+	 * Determines whether the given settings exists or not (in either
+	 * the custom *or* the default settings).
+	 * @param  string $key The key of the setting to lookup.
+	 * @return bool        Whether a setting with the specified key exists or not.
+	 */
+	public function has(string $key) : bool {
+		return static::hasPropertyByPath($this->customSettings, $key)
+			|| static::hasPropertyByPath($this->defaultSettings, $key);
+	}
+	
 	/**
 	 * Gets the value identified by the specified property, in dotted notation (e.g. `Network.Firewalling.Ports.Http`)
 	 * @param	string	$key	The property, in dotted notation, to return.
 	 * @return	mixed			The value odentified by the given dotted property notation.
 	 */
-	public function get($key) {
+	public function get(string $key) {
 		if(static::hasPropertyByPath($this->customSettings, $key)) {
 			return static::getPropertyByPath($this->customSettings, $key);
 		}
@@ -82,7 +97,7 @@ class TomlConfig
 	 * @param  string	$key	The key to fetch.
 	 * @return mixed	The default value of the property identified by the given dotted notation.
 	 */
-	public function getDefault($key) {
+	public function getDefault(string $key) {
 		return static::getPropertyByPath($this->defaultSettings, $key);
 	}
 	/**
@@ -90,7 +105,7 @@ class TomlConfig
 	 * @param	string	$key	The property, in dotted notation, to check.
 	 * @return	boolean			Whether the specified properties file has been explicitly specified in the custom settings file.
 	 */
-	public function hasChanged($key) {
+	public function hasChanged(string $key) {
 		return static::hasPropertyByPath($this->customSettings, $key);
 	}
 	/**
@@ -100,12 +115,12 @@ class TomlConfig
 	 * @param	mixed	$value	The value to set the property to.
 	 * @return	self			This ConfigFile instance, to aid method chaining.
 	 */
-	public function set($key, $value) {
+	public function set(string $key, $value) {
 		static::setPropertyByPath($this->customSettings, $key, $value);
 		return $this;
 	}
 	
-	public function setCustomSettingsBanner($value) {
+	public function setCustomSettingsBanner(string $value) {
 		$this->customSettingsBanner = $value;
 		return $this;
 	}
@@ -114,7 +129,7 @@ class TomlConfig
 	 * Saves the customised settings back to the disk.
 	 * @return boolean Whether the save was successful or not.
 	 */
-	public function save() {
+	public function save() : bool {
 		$output_builder = new TomlBuilder();
 		$toml_builder->addComment($this->customSettingsBanner);
 		
@@ -123,7 +138,7 @@ class TomlConfig
 		return file_put_contents($settingsFilePath, $toml_builder->getTomlString());
 	}
 	
-	private function build($toml_builder, $customSettingsObject, $subobject_name = null) {
+	private function build(TomlBuilder $toml_builder, stdClass $customSettingsObject, $subobject_name = null) : void {
 		if($subobject_name !== null)
 			$toml_builder->addTable($subobject_name);
 		
@@ -141,7 +156,7 @@ class TomlConfig
 	 * @param	string		$path	The dotted path to search with. e.g. `Network.Firewall.OpenPorts`
 	 * @return	boolean		Whether the given property is present in the given object.
 	 */
-	public static function hasPropertyByPath($obj, $path) {
+	public static function hasPropertyByPath(stdClass $obj, string $path) : bool {
 		$pathParts = explode(".", $path);
 		$subObj = $obj;
 		foreach($pathParts as $part) {
@@ -166,7 +181,7 @@ class TomlConfig
 	 * @param	string		$path	The path to extract from the given object.
 	 * @return	mixed				The property identified by the given object.
 	 */
-	public static function getPropertyByPath($obj, $path) {
+	public static function getPropertyByPath(stdClass $obj, string $path) {
 		$pathParts = explode(".", $path);
 		$subObj = $obj;
 		foreach($pathParts as $part) {
@@ -186,7 +201,7 @@ class TomlConfig
 	 * @param	string		$path	The path to set on the given object.
 	 * @param	mixed		$value	The value to  set the given property to.
 	 */
-	public static function setPropertyByPath($obj, $path, $value) {
+	public static function setPropertyByPath(stdClass $obj, string $path, $value) : void {
 		$pathParts = explode(".", $path);
 		$pathPartsCount = count($pathParts);
 		

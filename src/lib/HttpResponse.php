@@ -71,10 +71,10 @@ class HttpResponse
 	// ------------------------------------------------------------------------
 	
 	public static function create_simple(int $status, $body) : HttpResponse {
-		return self::create($status, [], $body);
+		return static::create($status, [], $body);
 	}
 	public static function create(int $status, array $headers, $body) : HttpResponse {
-		$result = (new self())
+		$result = (new static())
 			->status_set($status)
 			->body_set($body);
 		foreach($headers as $name => $value) {
@@ -84,35 +84,43 @@ class HttpResponse
 	}
 	
 	public static function create_simple_nightink(int $status, string $template, $options) : HttpResponse {
-		return self::create_nightink($status, [], $template, $options);
+		return static::create_nightink($status, [], $template, $options);
 	}
 	public static function create_nightink(int $status, array $headers, string $template, $options) : HttpResponse {
 		$nightink = new NightInk();
-		return self::create(
+		return static::create(
 			$status,
 			$headers,
 			$nightink->render($template, $options)
 		);
 	}
 	
-	public static function create_nightink_file(int $status, string $template_name, $options) : HttpResponse  {
+	public static function create_nightink_file(int $status, array $headers, string $template_name, $options) : HttpResponse  {
 		global $settings;
 		
 		$nightink = new NightInk();
-		return self::create(
+		return static::create(
 			$status,
 			$headers,
 			$nightink->render_file(
 				ROOT_DIR . "/"
 					. $settings->get("internal.templating.templates_path") . "/"
-					. $template_name."html",
+					. $template_name.".html",
 				$options
 			)
 		);
 	}
+	public static function create_nightink_file_simple(int $status, string $template_name, $options) : HttpResponse {
+		return static::create_nightink_file(
+			$status,
+			[],
+			$template_name,
+			$options
+		);
+	}
 	
 	public static function create_error(int $status, string $message) : HttpResponse {
-		return self::create_simple($status, $message)
+		return static::create_simple($status, $message)
 			->content_type("text/plain");
 	}
 }
