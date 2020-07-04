@@ -7,7 +7,7 @@
 	<body>
 		<h1>EmbedBox</h1>
 		
-		<div class="input">
+		<div id="controls" class="panel controls">
 			<input type="hidden" id="root-url" value="{{root_url}}" />
 			<div class="item">
 				<label for="input-url">URL:</label>
@@ -19,11 +19,18 @@
 			</div>
 		</div>
 		
-		<output id="output-html"></output>
+		<div id="output" class="panel">
+			<output id="output-html">(the html embed code will show here)</output>
+			<output id="output-markdown">(the markdown embed code will show here)</output>
+		</div>
 		
-		<output id="output-markdown"></output>
+		<div id="preview-container" class="panel">
+			<iframe id="preview"></iframe>
+		</div>
 		
-		<iframe id="preview"></iframe>
+		<footer>
+			<p>Built by <a href="https://starbeamrainbowlabs.com/">Starbeamrainbowlabs</a>.</p>
+		</footer>
 		
 		<!---------------->
 		<link rel="stylesheet" href="src/static/css/builder.css" />
