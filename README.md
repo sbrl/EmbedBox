@@ -6,7 +6,7 @@ EmbedBox is a generic syntax highlighted code embed generator. Given a URL to so
 
 Note that the URL needs to be to the _raw_ code. Example:
 
-URL										| 
+URL										| .
 ----------------------------------------|------------
 `https://github.com/sbrl/EmbedBox/blob/master/index.php`            | **wrong**
 `https://raw.githubusercontent.com/sbrl/EmbedBox/master/index.php`  | **right**
