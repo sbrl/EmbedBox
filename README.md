@@ -8,8 +8,8 @@ Note that the URL needs to be to the _raw_ code. Example:
 
 URL										| Correct?
 ----------------------------------------|------------
-`https://github.com/sbrl/EmbedBox/blob/master/index.php`	| **wrong**
-`https://raw.githubusercontent.com/sbrl/EmbedBox/master/index.php`	| **right**
+`https://github.com/sbrl/EmbedBox/blob/master/index.php`            | **wrong**
+`https://raw.githubusercontent.com/sbrl/EmbedBox/master/index.php`  | **right**
 
 In other words, it needs to be the URL from the <kbd>raw</kbd> button on the file, not the link to the file in GitHub / GitLab's web interface.
 
