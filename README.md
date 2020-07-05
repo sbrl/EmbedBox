@@ -21,6 +21,12 @@ In other words, it needs to be the URL from the <kbd>raw</kbd> button on the fil
  - Multiple themes
  - Javascript-free client-side (embed only - the interactive builder needs JS)
 
+### Screenshots
+<details>
+<summary>Expand to view screenshots</summary>
+![Screenshot of the builder](https://raw.githubusercontent.com/sbrl/EmbedBox/master/screenshot.png)
+</details>
+
 ## System Requirements
  - [PHP](https://php.net/)-enabled web server with write access
  - [Composer](https://getcomposer.org/)
