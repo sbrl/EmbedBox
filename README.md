@@ -28,12 +28,6 @@ Stay up-to-date! [![RSS feed](https://img.shields.io/badge/%F0%9F%8D%84-RSS-oran
  - Can be hosted in a subdirectory
 
 
-## Demo
-Check out the demo here: <https://starbeamrainbowlabs.com/embedbox/>
-
-It will only work for code in my GitHub / GitLab repositories (i.e. repositories under <https://github.com/sbrl/> or <https://gitlab.com/sbrl/>) to discourage hotlinking (see below for instructions to run your own instance!).
-
-
 ### Screenshots
 <details>
 <summary>Expand to view screenshots</summary>
@@ -42,6 +36,13 @@ It will only work for code in my GitHub / GitLab repositories (i.e. repositories
 <h4>A full-screen embed</h4>
 <img alt="Screenshot of a full-screen embed" src="https://raw.githubusercontent.com/sbrl/EmbedBox/master/screenshot2.png" />
 </details>
+
+
+## Demo
+Check out the demo here: <https://starbeamrainbowlabs.com/embedbox/>
+
+It will only work for code in my GitHub / GitLab repositories (i.e. repositories under <https://github.com/sbrl/> or <https://gitlab.com/sbrl/>) to discourage hotlinking (see below for instructions to run your own instance!).
+
 
 ## System Requirements
  - [PHP](https://php.net/)-enabled web server with a recent version of PHP and write access
