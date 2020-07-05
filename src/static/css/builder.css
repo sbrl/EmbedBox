@@ -71,7 +71,7 @@ iframe {
 footer { grid-area: footer; }
 
 
-
+h2 { text-align: center; margin: 0 0 0.5em 0; }
 iframe, img, video, audio { min-width: 100%; }
 
 label {
@@ -79,7 +79,7 @@ label {
 	cursor: pointer;
 	text-align: right;
 }
-label, input {
+label, input, select {
 	margin: 0.5em 0;
 	padding: 0.5em 0.75em;
 }

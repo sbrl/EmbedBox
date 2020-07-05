@@ -8,6 +8,7 @@
 		<h1>EmbedBox</h1>
 		
 		<div id="controls" class="panel controls">
+			<h2>Controls</h2>
 			<input type="hidden" id="root-url" value="{{root_url}}" />
 			<div class="item">
 				<label for="input-url">URL:</label>
@@ -34,11 +35,17 @@
 		</div>
 		
 		<div id="output" class="panel">
+			<h2>Embed Code</h2>
+			<p><strong>URL:</strong></p>
+			<output id="output-url">(the url will show here)</output>
+			<p><strong>HTML:</strong></p>
 			<output id="output-html">(the html embed code will show here)</output>
+			<p><strong>Markdown:</strong></p>
 			<output id="output-markdown">(the markdown embed code will show here)</output>
 		</div>
 		
 		<div id="preview-container" class="panel">
+			<h2>Preview</h2>
 			<iframe id="preview"></iframe>
 		</div>
 		

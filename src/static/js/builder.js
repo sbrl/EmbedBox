@@ -15,8 +15,21 @@ window.addEventListener("load", (_event) => {
 	document.getElementById("input-theme-dark").addEventListener("change", update_output);
 	document.getElementById("input-theme-dark").addEventListener("input", update_output);
 	
+	document.querySelectorAll("output").forEach((el) => {
+		el.addEventListener("click", select_all);
+		el.addEventListener("touchend", select_all);
+	});
+	
 	update_output();
 });
+
+function select_all(event) {
+	let selection = window.getSelection(),
+		range = new Range();
+	
+	range.selectNode(event.target.closest("output"));
+	selection.addRange(range);
+}
 
 function update_output() {
 	let url = document.getElementById("input-url").value;
@@ -27,9 +40,11 @@ function update_output() {
 	
 	if(url.trim().length == 0) return;
 	
+	let iframe_src = generate_iframe_src(root_url, url, lang, theme, theme_dark);
 	document.getElementById("output-markdown").value = generate_markdown(url, lang);
 	document.getElementById("output-html").value = generate_html(root_url, url, lang, theme, theme_dark);
-	document.getElementById("preview").src = generate_iframe_src(root_url, url, lang, theme, theme_dark);
+	document.getElementById("output-url").value = iframe_src;
+	document.getElementById("preview").src = iframe_src;
 }
 
 function generate_markdown(url, lang) {

@@ -47,7 +47,7 @@ pre {
 	font-size: 1.2em;
 	white-space: pre-wrap;
 }
-code.hljs { padding-bottom: 5em; }
+code.hljs { min-height: 100vh; padding-bottom: 5em; }
 strong { color: var(--text-bold); }
 
 footer {
