@@ -20,6 +20,11 @@
 		
 		--shadow: hsla(0, 0%, 31%, 0.5);
 	}
+	
+	a { color: hsl(208, 67%, 77%); }
+	a:visited { color: hsl(264, 77%, 75%); }
+	a:hover { color: hsl(214, 67%, 75%); }
+	a:active, a:focus { color: hsl(214, 87%, 85%); }
 }
 
 html, body { font-size: 100%; }
