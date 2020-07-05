@@ -10,6 +10,7 @@ use SBRL\TomlConfig;
 // ----------------------------------------------------------------------------
 
 return [
+	"cache_dir_app" => ROOT_DIR."/data/cache/app",
 	// These are created during initalisation, but we want them available via dependency injection too
 	TomlConfig::class => function(ContainerInterface $c) {
 		global $settings;
@@ -22,8 +23,13 @@ return [
 	
 	Stash\Pool::class => function(ContainerInterface $c) {
 		$settings = $c->get(TomlConfig::class);
+		$cache_dir = $c->get("cache_dir_app");
+		// Create the cache directory if it doesn't exist already
+		if(!file_exists($cache_dir))
+			mkdir($cache_dir, 0700);
+		
 		$cache = new Stash\Pool(new Stash\Driver\FileSystem([
-			"path" => ROOT_DIR."/data/cache/"
+			"path" => $cache_dir
 		]));
 		return $cache;
 	}
