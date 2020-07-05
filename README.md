@@ -16,7 +16,7 @@ In other words, it needs to be the URL from the <kbd>raw</kbd> button on the fil
 
 ## Features
  - Server-side syntax highlighting
- - [Inbuilt cache](http://www.stashphp.com/) with stampede protection
+ - [Inbuilt cache](http://www.stashphp.com/) with stampede protection (defaults to 1 hour)
  - [`prefers-color-scheme`](https://starbeamrainbowlabs.com/blog/article.php?article=posts%2F353-prefers-color-scheme.html) support
  - Multiple themes
  - Javascript-free client-side (embed only - the interactive builder needs JS)
