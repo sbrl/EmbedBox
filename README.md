@@ -24,7 +24,7 @@ In other words, it needs to be the URL from the <kbd>raw</kbd> button on the fil
 ### Screenshots
 <details>
 <summary>Expand to view screenshots</summary>
-![Screenshot of the builder](https://raw.githubusercontent.com/sbrl/EmbedBox/master/screenshot.png)
+<img alt="Screenshot of the builder" src="https://raw.githubusercontent.com/sbrl/EmbedBox/master/screenshot.png" />
 </details>
 
 ## System Requirements
