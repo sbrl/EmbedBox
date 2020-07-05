@@ -2,7 +2,17 @@
 
 > Syntax-highlighted code embed generator
 
-EmbedBox is a generic syntax highlighted code embed generator.
+EmbedBox is a generic syntax highlighted code embed generator. Given a URL to some code, it generates a syntax-highlighted embed for it.
+
+Note that the URL needs to be to the _raw_ code. Example:
+
+URL										| Correct?
+----------------------------------------|------------
+`https://github.com/sbrl/EmbedBox/blob/master/index.php`	| **wrong**
+`https://raw.githubusercontent.com/sbrl/EmbedBox/master/index.php`	| **right**
+
+In other words, it needs to be the URL from the <kbd>raw</kbd> button on the file, not the link to the file in GitHub / GitLab's web interface.
+
 
 ## Features
  - Server-side syntax highlighting
@@ -12,16 +22,57 @@ EmbedBox is a generic syntax highlighted code embed generator.
  - Javascript-free client-side (embed only - the interactive builder needs JS)
 
 ## System Requirements
-TODO fill this out
+ - [PHP](https://php.net/)-enabled web server with write access
+ - [Composer](https://getcomposer.org/)
+ - [git](https://git-scm.com/)
+
 
 ## Installation
-TODO fill this out
+First, clone this repository:
+
+```bash
+git clone https://github.com/sbrl/EmbedBox.git;
+```
+
+Then, install dependencies:
+
+```
+cd EmbedBox;
+composer install;
+```
+
+
 
 ### Configuration
-TODO fill this out
+After you've made at least 1 request to it, the custom settings file will be created at `data/settings.toml`. Open this up for editing in your favourite editor.
+
+There are 2 settings that need to be adjusted.
+
+The first of these is the `root_url` in the `[http]` section. This needs to be the absolute external path to `index.php` as an external user would see it. This is used when generating the embed HTML in the `<iframe>`'s `src`.
+
+The second of these is the `allow` array in the `[access_control]` section. This should be a list of regular expressions. If a given URL matches one of these regular expressions, it will be allowed. If a URL does _not_ match any of these regular expressions, it will be blocked. This helps avoid use by others rendering embeds for other random stuff, eating up your server resources.
+
+For example, here's a pair of regular expressions that match against your GitHub / GitLab content:
+
+```toml
+[access_control]
+allow = [
+	"^https:\\/\\/git(hub|lab)\\.com\\/YOUR_USERNAME_HERE\\/.*$",
+	"^https:\\/\\/((gist|raw)\\.)?githubusercontent.com\\/YOUR_USERNAME_HERE\\/.*$",
+]
+```
+
+Replace `YOUR_USERNAME_HERE` with your GitHub / GitLab username.
+
+Save and close the file. You're done! You should now be able to use EmbedBox. Navigate to the `root_url` you set in the configuration file in your web browser to get started.
+
+Advanced users can take advantage of [additional configuration options](https://github.com/sbrl/EmbedBox/blob/master/src/settings.default.toml) to customise their instance.
+
 
 ## Real World Usage
-TODO fill this out
+ - On my blog
+ - _(Are you using EmbedBox? [Open an issue](https://github.com/sbrl/EmbedBox) and I'll feature you here!)_
+
 
 ## Contributing
 Contributions are very welcome - both issues and pull requests! Please mention in your pull request that you release your work under the MPL-2.0 (see below).
