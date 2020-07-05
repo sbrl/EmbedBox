@@ -18,6 +18,18 @@ In other words, it needs to be the URL from the <kbd>raw</kbd> button on the fil
 Stay up-to-date! [![RSS feed](https://img.shields.io/badge/%F0%9F%8D%84-RSS-orange)](https://github.com/sbrl/EmbedBox/releases.atom) [![GitHub Releases](https://img.shields.io/badge/%E2%8E%94-GitHub%20Releases-black)](https://github.com/sbrl/EmbedBox/releases) (Don't forget you can watch releases too) 
 
 
+## Contents
+ - [Features](#features)
+     - [Screenshots](#screenshots)
+ - [Demo](#demo)
+ - [System Requirements](#system-requirements)
+ - [Installation](#installation)
+ - [Configuration](#configuration)
+ - [Real World Usage](#real-world-usage)
+ - [Contributing](#contributing)
+ - [Licence](#licence)
+
+
 ## Features
  - Server-side syntax highlighting
  - [Inbuilt cache](http://www.stashphp.com/) with stampede protection (defaults to 1 hour)
