@@ -31,7 +31,7 @@ In other words, it needs to be the URL from the <kbd>raw</kbd> button on the fil
 </details>
 
 ## System Requirements
- - [PHP](https://php.net/)-enabled web server with write access
+ - [PHP](https://php.net/)-enabled web server with a recent version of PHP and write access
  - [Composer](https://getcomposer.org/)
  - [git](https://git-scm.com/)
 
