@@ -1,7 +1,13 @@
 <?php
+// 0: Environment
 $start_time = microtime(true);
-
 define("ROOT_DIR", dirname(__FILE__));
+$version = trim(file_get_contents(ROOT_DIR."/version"));
+
+// Set the user agent string
+$php_version = ini_get("expose_php") == "1" ? "PHP/".phpversion() : "PHP";
+ini_set("user_agent", "$php_version (".PHP_SAPI."; ".PHP_OS." ".php_uname("m")."; ".(PHP_INT_SIZE*8)." bits; rv:$version) EmbedBox/$version");
+unset($php_version);
 
 
 // 1: Autoloaders
@@ -24,7 +30,7 @@ $settings = new \SBRL\TomlConfig(
 );
 $perfcounter->end("settings");
 
-// 2.5: Check for update
+// 3: Check for update
 $update_migrator = new \EmbedBox\UpdateMigrator();
 $update_migrator->check();
 unset($update_migrator);
