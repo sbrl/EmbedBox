@@ -21,6 +21,8 @@ In other words, it needs to be the URL from the <kbd>raw</kbd> button on the fil
  - Multiple themes
  - Javascript-free client-side (embed only - the interactive builder needs JS)
  - Should be fairly accessible (screen readers, ACAG accessible text standards - except some minor issue with the syntax highlighting itself) - [open an issue](https://github.com/sbrl/EmbedBox/issues/new) if you find a problem
+ - Can be hosted in a subdirectory
+
 
 ### Screenshots
 <details>
