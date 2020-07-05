@@ -38,6 +38,7 @@ Stay up-to-date! [![RSS feed](https://img.shields.io/badge/%F0%9F%8D%84-RSS-oran
  - Javascript-free client-side (embed only - the interactive builder needs JS)
  - Should be fairly accessible (screen readers, ACAG accessible text standards - except some minor issue with the syntax highlighting itself) - [open an issue](https://github.com/sbrl/EmbedBox/issues/new) if you find a problem
  - Can be hosted in a subdirectory
+ - Regular expression-based allow / deny rules for URLs
 
 
 ### Screenshots
