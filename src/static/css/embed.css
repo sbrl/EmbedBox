@@ -45,6 +45,7 @@ a {
 pre {
 	margin: 0;
 	font-size: 1.2em;
+	white-space: pre-wrap;
 }
 code.hljs { padding-bottom: 5em; }
 strong { color: var(--text-bold); }
