@@ -74,7 +74,7 @@ class CachedHighlighter {
 	
 	private function get_file_ext(string $url) {
 		$filename = basename($url);
-		$pos = strpos($filename, ".");
+		$pos = strrpos($filename, ".");
 		if($pos === false)
 			return null;
 		

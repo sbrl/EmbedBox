@@ -72,7 +72,7 @@ footer { grid-area: footer; }
 
 
 h2 { text-align: center; margin: 0 0 0.5em 0; }
-iframe, img, video, audio { min-width: 100%; }
+iframe, img:not(.icon), video, audio { min-width: 100%; }
 
 label {
 	font-weight: bold;
@@ -92,6 +92,11 @@ output {
 	box-shadow: inset 0 0 0.5em var(--shadow);
 }
 
+
+.icon {
+	max-height: 1.25em;
+	vertical-align: middle;
+}
 
 .panel {
 	margin: 1em; padding: 1em;
