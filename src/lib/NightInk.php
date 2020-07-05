@@ -5,10 +5,13 @@ namespace SBRL;
 /**
  * A teeny-tiny templating engine.
  * @author			Starbeamrainbowlabs
- * @version			v0.2
+ * @version			v0.3
  * @lastModified	23rd August 2018
  * @license			https://www.mozilla.org/en-US/MPL/2.0/	Mozilla Public License 2.0
  * Changelog:
+	 * v0.3:
+	 	 * Support a single dot (".") to mean the current item
+	 	 * Fix multiple {#each} directives
 	 * v0.2:
 	 	 * Don't replace if a value can't be found
  	 * v0.1:
@@ -27,8 +30,14 @@ class NightInk
 	 * @param	string[]		$parts	The keys to use to drill down and find the requested item.
 	 * @return	mixed			The item at the location specified by the $parts array of keys.
 	 */
-	protected function locate_part($data, $parts) {
+	protected function locate_part($data, $parts_text) {
+		if($parts_text == ".") return $data;
+		
 		$sub_data = $data;
+		$parts = array_filter(
+			explode(".", $parts_text),
+			function($el) { return strlen($el) > 0; }
+		);
 		foreach($parts as $part) {
 			if(is_object($sub_data) && isset($sub_data->$part))
 				$sub_data = $sub_data->$part;
@@ -64,15 +73,13 @@ class NightInk
 			"/\{\{?([^{}]*)\}\}?/iu",
 			function($matches) use($options) {
 				// {{key}} {key} parsing
-				$parts = array_filter(
-					explode(".", $matches[1]),
-					function($el) { return strlen($el) > 0; }
-				);
 				
-				$sub_data = strval(count($parts) > 0 ? $this->locate_part($options, $parts) : $options);
+				$sub_data = $this->locate_part($options, $matches[1]);
 				
 				if($sub_data == null)
 					return $matches[0];
+				
+				$sub_data = strval($sub_data);
 				
 				// The first char has to be a { anyway - so if the second char is a {, then it *has* to be {{
 				if($matches[0][1] == "{")
@@ -81,7 +88,7 @@ class NightInk
 				return $sub_data;
 			},
 			preg_replace_callback(
-				"/\{#each\s+([^{}]+)\}(.*)\{#endeach\}/imus",
+				"/\{#each\s+([^{}]+)\}(.*?)\{#endeach\}/imus",
 				function($matches) use($options) {
 					// {#each key} parsing
 					// 0: full thing
@@ -90,8 +97,11 @@ class NightInk
 					
 					$sub_data = $this->locate_part(
 						$options,
-						explode(".", $matches[1])
+						$matches[1]
 					);
+					
+					// echo("options: "); var_dump($options);
+					// echo("matches[1]: "); var_dump($matches[1]);
 					
 					$result = "";
 					foreach($sub_data as $item)

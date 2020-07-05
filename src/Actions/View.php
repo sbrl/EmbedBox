@@ -25,10 +25,10 @@ class View
 			return HttpResponse::create_error(400, "Error: The url GET parameter was not defined.");
 		
 		$url = $_GET["url"];
-		$type = $_GET["type"] ?? "__AUTO__";
+		$type = $_GET["lang"] ?? $_GET["type"] ?? "__AUTO__";
 		
 		$theme_name = $_GET["theme"] ?? $this->settings->get("highlighting.default_theme");
-		$theme_name_dark = $_GET["theme_dark"] ?? $this->settings->get("highlighting.default_theme_dark");
+		$theme_name_dark = $_GET["theme-dark"] ?? $this->settings->get("highlighting.default_theme_dark");
 		
 		if(!$this->access_controller->is_allowed($url))
 			return HttpResponse::create_error(400, "Error: The url specified is not allowed by the defined access rules (if this is a mistake, update them in the settings file)");

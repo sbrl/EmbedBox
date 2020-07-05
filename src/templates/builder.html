@@ -19,7 +19,17 @@
 			</div>
 			<div class="item">
 				<label for="input-theme">Theme (default):</label>
-				<!-- TODO: option list here -->
+				<select id="input-theme">
+					<option value="__AUTO__">Default</option>
+					{#each themes}<option value="{{.}}">{{.}}</option>{#endeach}
+				</select>
+			</div>
+			<div class="item">
+				<label for="input-theme-dark" title="The dark theme is activated automatically by the prefers-color-scheme CSS media query.">Theme (dark theme):</label>
+				<select id="input-theme-dark">
+					<option value="__AUTO__">Default</option>
+					{#each themes}<option value="{{.}}">{{.}}</option>{#endeach}
+				</select>
 			</div>
 		</div>
 		

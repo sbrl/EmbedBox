@@ -85,7 +85,7 @@ class CachedHighlighter {
 		$result = null;
 		try {
 			$result = $this->highlighter->highlight($type, $source);
-		} catch(DomainException $error) {
+		} catch(\DomainException $error) {
 			$result = (object) [
 				"language" => "unknown-language",
 				"value" => htmlentities($source)
