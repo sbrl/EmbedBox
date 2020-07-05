@@ -20,6 +20,7 @@ In other words, it needs to be the URL from the <kbd>raw</kbd> button on the fil
  - [`prefers-color-scheme`](https://starbeamrainbowlabs.com/blog/article.php?article=posts%2F353-prefers-color-scheme.html) support
  - Multiple themes
  - Javascript-free client-side (embed only - the interactive builder needs JS)
+ - Should be fairly accessible (screen readers, ACAG accessible text standards - except some minor issue with the syntax highlighting itself) - [open an issue](https://github.com/sbrl/EmbedBox/issues/new) if you find a problem
 
 ### Screenshots
 <details>
@@ -80,7 +81,7 @@ Advanced users can take advantage of [additional configuration options](https://
 
 ## Real World Usage
  - On my blog
- - _(Are you using EmbedBox? [Open an issue](https://github.com/sbrl/EmbedBox) and I'll feature you here!)_
+ - _(Are you using EmbedBox? [Open an issue](https://github.com/sbrl/EmbedBox/issues/new) and I'll feature you here!)_
 
 
 ## Contributing
