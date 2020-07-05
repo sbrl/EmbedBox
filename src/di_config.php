@@ -26,7 +26,7 @@ return [
 		$cache_dir = $c->get("cache_dir_app");
 		// Create the cache directory if it doesn't exist already
 		if(!file_exists($cache_dir))
-			mkdir($cache_dir, 0700);
+			mkdir($cache_dir, 0700, true);
 		
 		$cache = new Stash\Pool(new Stash\Driver\FileSystem([
 			"path" => $cache_dir

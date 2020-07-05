@@ -24,6 +24,11 @@ $settings = new \SBRL\TomlConfig(
 );
 $perfcounter->end("settings");
 
+// 2.5: Check for update
+$update_migrator = new \EmbedBox\UpdateMigrator();
+$update_migrator->check();
+unset($update_migrator);
+
 
 // 3: Dependency injection
 
