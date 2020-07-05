@@ -28,6 +28,12 @@ Stay up-to-date! [![RSS feed](https://img.shields.io/badge/%F0%9F%8D%84-RSS-oran
  - Can be hosted in a subdirectory
 
 
+## Demo
+Check out the demo here: <https://starbeamrainbowlabs.com/embedbox/>
+
+It will only work for code in my GitHub / GitLab repositories (i.e. repositories under <https://github.com/sbrl/> or <https://gitlab.com/sbrl/>) to discourage hotlinking (see below for instructions to run your own instance!).
+
+
 ### Screenshots
 <details>
 <summary>Expand to view screenshots</summary>
