@@ -2,7 +2,7 @@
 
 > Syntax-highlighted code embed generator
 
-EmbedBox is a generic syntax highlighted code embed generator. Given a URL to some code, it generates a syntax-highlighted embed for it.
+Written by the author of [Pepperminty Wiki](https://github.com/sbrl/Pepperminty-Wiki/), EmbedBox is a generic syntax highlighted code embed generator. Given a URL to some code, it generates a syntax-highlighted embed for it.
 
 Note that the URL needs to be to the _raw_ code. Example:
 
