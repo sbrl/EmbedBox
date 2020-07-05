@@ -29,9 +29,13 @@ default_action = "builder"
 lifetime = 3600
 
 [highlighting]
-default_theme = "github-gist"
+# The default syntax highlighting theme
+# default_theme = "github-gist"
+default_theme = "atom-one-light"
 # Default theme for users with prefers-color-scheme: dark or terminal browsers
-default_theme_dark = "atom-one-dark-reasonable"
+# default_theme_dark = "atom-one-dark-reasonable"
+# default_theme_dark = "obsidian"
+default_theme_dark = "monokai"
 
 ###############################################################################
 

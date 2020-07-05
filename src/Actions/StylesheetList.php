@@ -17,6 +17,7 @@ class StylesheetList
 		$format = $_GET["format"] ?? "text";
 		
 		$themes = \HighlightUtilities\getAvailableStyleSheets();
+		sort($themes);
 		
 		$mime = "text/plain";
 		$result = null;
