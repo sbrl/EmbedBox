@@ -13,7 +13,7 @@ URL										| Correct?
 
 In other words, it needs to be the URL from the <kbd>raw</kbd> button on the file, not the link to the file in GitHub / GitLab's web interface.
 
-**Latest Version:** [![stable version badge](https://img.shields.io/github/release/sbrl/EmbedBox.svg?color=brightgreen&label=stable)](https://github.com/sbrl/EmbedBox/releases/latest) ![pre-release version badge](https://img.shields.io/github/v/release/sbrl/EmbedBox?color=yellow&include_prereleases&label=pre-release) ![development version badge](https://img.shields.io/badge/dynamic/json?color=orange&label=development&query=latest_version&url=https%3A%2F%2Fstarbeamrainbowlabs.com%2Flabs%2Fpeppermint%2Fpack.php%3Fdetermine-latest-version) ([Changelog](https://github.com/sbrl/EmbedBox/blob/master/Changelog.md))
+**Latest Version:** [![stable version badge](https://img.shields.io/github/release/sbrl/EmbedBox.svg?color=brightgreen&label=stable)](https://github.com/sbrl/EmbedBox/releases/latest) ![pre-release version badge](https://img.shields.io/github/v/release/sbrl/EmbedBox?color=yellow&include_prereleases&label=pre-release) ([Changelog](https://github.com/sbrl/EmbedBox/blob/master/Changelog.md))
 
 Stay up-to-date! [![RSS feed](https://img.shields.io/badge/%F0%9F%8D%84-RSS-orange)](https://github.com/sbrl/EmbedBox/releases.atom) [![GitHub Releases](https://img.shields.io/badge/%E2%8E%94-GitHub%20Releases-black)](https://github.com/sbrl/EmbedBox/releases) (Don't forget you can watch releases too) 
 
