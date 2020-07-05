@@ -17,6 +17,7 @@ class Builder
 		if($this->settings->get("http.root_url") == "CHANGE_ME")
 			return HttpResponse::create_error(503, "Error: The root url has not yet been defined. Do this in the settings file now (hint: it's the http.root_url setting).");
 		return HttpResponse::create_nightink_file_simple(200, "builder", (object) [
+			"version" => trim(file_get_contents(ROOT_DIR."/version")),
 			"root_url" => $this->settings->get("http.root_url"),
 			"themes" => \HighlightUtilities\getAvailableStyleSheets(),
 			"default_theme" => $this->settings->get("highlighting.default_theme"),
