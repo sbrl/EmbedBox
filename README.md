@@ -118,3 +118,5 @@ If you're feeling that way inclined, the sponsor button at the top of the page (
 
 ## Licence
 EmbedBox is released under the Mozilla Public License 2.0. The full license text is included in the `LICENSE` file in this repository. Tldr legal have a [great summary](https://tldrlegal.com/license/mozilla-public-license-2.0-(mpl-2)) of the license if you're interested.
+
+The icon however is licenced under the [Creative Commons Share-Alike Attribution 4.0 International Lience](https://creativecommons.org/licenses/by-sa/4.0/) (CC-BY-SA 4.0).

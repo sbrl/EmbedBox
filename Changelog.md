@@ -4,6 +4,8 @@ This is the main changelog for EmbedBox.
 
 ## Unreleased
  - Set the user agent when making external requests
+ - Add icon
+ - Add `generator` `<meta />` tag
 
 
 ## v0.1.1

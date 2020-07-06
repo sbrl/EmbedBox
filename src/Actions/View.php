@@ -39,6 +39,7 @@ class View
 			return HttpResponse::create_error(503, "Error: Something went wrong when highlighting the specified URL. Details: $result->error");
 		
 		return HttpResponse::create_nightink_file_simple(200, "embed", (object) [
+			"version" => trim(file_get_contents(ROOT_DIR."/version")),
 			"theme" => $theme_name,
 			"theme_dark" => $theme_name_dark,
 			"code" => $result->content,
